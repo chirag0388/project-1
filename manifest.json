@@ -1,0 +1,16 @@
+{
+    "name": "Snake Water Gun",
+    "short_name": "SWG Game",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f5f7fa",
+    "theme_color": "#6C63FF",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "assets/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Water Gun</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <h1 class="title">Snake Water Gun</h1>
+
+        <!-- MENU SCREEN -->
+        <div id="menu-screen" class="screen active">
+            <div class="menu-buttons">
+                <button class="btn primary" onclick="startGame('pvc')">Computer vs Player</button>
+                <button class="btn secondary" onclick="startGame('pvp')">Local PvP</button>
+            </div>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="game-screen" class="screen">
+            <div class="scoreboard">
+                <div class="score-box">
+                    <span id="p1-name">Player 1</span>
+                    <span id="score-p1" class="score">0</span>
+                </div>
+                <div class="vs">VS</div>
+                <div class="score-box">
+                    <span id="p2-name">Computer</span>
+                    <span id="score-p2" class="score">0</span>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="instruction" id="instruction">Choose your weapon!</div>
+
+                <div class="choices-container">
+                    <div class="choice-card" onclick="makeChoice('s')">
+                        <img src="./assets/snake.png" alt="Snake">
+                        <span>Snake</span>
+                    </div>
+                    <div class="choice-card" onclick="makeChoice('w')">
+                        <img src="./assets/water.png" alt="Water">
+                        <span>Water</span>
+                    </div>
+                    <div class="choice-card" onclick="makeChoice('g')">
+                        <img src="./assets/gun.png" alt="Gun">
+                        <span>Gun</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn small" onclick="showMenu()">Back to Menu</button>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="result-screen" class="screen">
+            <h2 id="result-text">You Win!</h2>
+
+            <div class="result-display">
+                <div class="result-card">
+                    <span class="label" id="res-p1-name">You</span>
+                    <img id="res-p1-img" src="" alt="Choice">
+                </div>
+                <div class="vs-large">VS</div>
+                <div class="result-card">
+                    <span class="label" id="res-p2-name">Comp</span>
+                    <img id="res-p2-img" src="" alt="Choice">
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn primary" onclick="playAgain()">Play Again</button>
+                <button class="btn secondary" onclick="showMenu()">Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
